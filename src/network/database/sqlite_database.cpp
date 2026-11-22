@@ -1081,7 +1081,7 @@ void SQLiteDatabase::listBanTable(std::stringstream& out)
 int SQLiteDatabase::loadPermissionLevelForOID(const uint32_t online_id)
 {
     int lvl = 0;
-    char* errmsg;
+    char* errmsg = nullptr;
     std::string query = StringUtils::insertValues(
         "SELECT level FROM %s WHERE online_id = %u;",
         ServerConfig::m_permissions_table.c_str(),
@@ -1195,7 +1195,7 @@ std::tuple<uint32_t, std::string> SQLiteDatabase::loadRestrictionsForOID(uint32_
         std::string kart_id;
     } __target;
 
-    char* errmsg;
+    char* errmsg = nullptr;
     std::string query = StringUtils::insertValues(
         "SELECT flags, kart_id FROM %s WHERE online_id = %u;",
         ServerConfig::m_restrictions_table.c_str(),
